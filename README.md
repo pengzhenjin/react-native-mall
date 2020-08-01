@@ -6,18 +6,6 @@
 - 顶部滑动的tab、下拉菜单
 
 ### 效果图：
-
-
-<figure>
-    <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png" />
-    <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/2.png" />
-</figure>
-<figure>
-    <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/3.png" />
-</figure>
-
-
-
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png)
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/2.png)
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/3.png)
