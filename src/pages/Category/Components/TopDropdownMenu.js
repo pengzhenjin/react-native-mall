@@ -22,13 +22,12 @@ const iconItemSelected = require('../../../images/icon_check_mark.png');
 export default class TopDropdownMenu extends Component {
     static propTypes = {
         data: PropTypes.array.isRequired, // 数据（数组）
-        topOffset: PropTypes.number, // 距离屏幕顶部的偏移量
         onItemSelected: PropTypes.func, // 选中 item 时的回调函数
         onShow: PropTypes.func, // 显示时的回调函数
         onHide: PropTypes.func, // 隐藏时的回调函数
     };
     static defaultProps = {
-        topOffset: 0,
+
     };
 
     constructor(props) {
@@ -43,12 +42,13 @@ export default class TopDropdownMenu extends Component {
 
     /**
      * 显示
-     * @param index
+     * @param topOffset 距离页面顶部的偏移量
+     * @param index 当前选中时的 item index
      */
-    show = (index) => {
-        this.setState({isVisible: true, currentItemIndex: index});
-        this.props.onShow && this.props.onShow();
-    };
+    show = (topOffset, index) => {
+        this.setState({isVisible: true, topOffset: topOffset, currentItemIndex: index})
+        this.props.onShow && this.props.onShow()
+    }
 
     /**
      * 隐藏

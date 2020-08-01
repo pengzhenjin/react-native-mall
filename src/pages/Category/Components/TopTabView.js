@@ -11,8 +11,6 @@ import {
     TouchableOpacity,
     Image,
     Text,
-    StatusBar,
-    Platform,
 } from 'react-native'
 import PropTypes from 'prop-types'
 import TopDropdownMenu from './TopDropdownMenu'
@@ -22,10 +20,6 @@ const iconArrowUp = require('../../../images/icon_arrow_up.png')
 const iconArrowDown = require('../../../images/icon_arrow_down.png')
 
 const itemHeight = 50 // item 的高度
-
-const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 20
-const headerNavHeight = Platform.OS === 'ios' ? 44 : 56
-const topOffset = itemHeight  + headerNavHeight
 
 export default class TopTabView extends Component {
     static propTypes = {
@@ -58,10 +52,14 @@ export default class TopTabView extends Component {
 
     /**
      * 显示下拉菜单
-     * @param index
+     * @param index 当前选中时的 tab 下标
      */
     showDropdownMenu = (index) => {
-        this.dropdownMenu.show(index)
+        // measure方法测量"箭头图标"在页面中的位置
+        this.arrowIcon.measure((x, y, width, height, pageX, pageY) => {
+            const topOffset = pageY + height // 计算"下拉菜单"距离页面顶部的偏移量
+            this.dropdownMenu.show(topOffset, index) // 显示"下拉菜单"
+        })
     }
 
     renderListItem = ({item, index}) => {
@@ -90,14 +88,17 @@ export default class TopTabView extends Component {
                     showsHorizontalScrollIndicator={false}
                     initialScrollIndex={0}
                 />
-                <TouchableOpacity style={styles.arrow_container} onPress={() => this.showDropdownMenu(currentTabIndex)}>
+                <TouchableOpacity
+                    ref={refs => this.arrowIcon = refs}
+                    style={styles.arrow_container}
+                    onPress={() => this.showDropdownMenu(currentTabIndex)}
+                >
                     <Image source={isShowDropdown ? iconArrowUp : iconArrowDown} />
                 </TouchableOpacity>
 
                 <TopDropdownMenu
                     ref={refs => this.dropdownMenu = refs}
                     data={data}
-                    topOffset={topOffset}
                     onItemSelected={(index) => this.onChangeTab(index)}
                     onShow={() => this.setState({isShowDropdown: true})}
                     onHide={() => this.setState({isShowDropdown: false})}
