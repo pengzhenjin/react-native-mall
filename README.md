@@ -7,13 +7,15 @@
 
 ### 效果图：
 
-<center>
-    <figure>
-        <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png" />
-        <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/2.png" />
-        <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/3.png" />
-    </figure>
-</center>
+
+<figure>
+    <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png" />
+    <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/2.png" />
+</figure>
+<figure>
+    <img src="https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/3.png" />
+</figure>
+
 
 
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png)
