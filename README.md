@@ -5,8 +5,8 @@
 - 商品子分类
 - 顶部滑动的tab、下拉菜单
 
-### Android 效果图：
-![效果图](https://github.com/pengzhenjin/mall/blob/master/screenshot/mall_android.gif)
-
-### iOS 效果图：
+### 效果图：
+![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png)
+![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/2.png)
+![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/3.png)
 
