@@ -9,3 +9,28 @@
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/1.png)
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/2.png)
 ![效果图](https://github.com/pengzhenjin/react-native-mall/blob/master/screenshot/3.png)
+
+### 运行项目
+
+- iOS，在项目根目录下依次执行如下命令：
+```
+yarn install
+```
+
+```
+cd ios
+pod install
+```
+
+```
+yarn ios
+```
+
+- Android，在项目根目录下依次执行如下命令：
+```
+yarn install
+```
+
+```
+yarn android
+```
