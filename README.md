@@ -1,5 +1,4 @@
 ## 商城、购物（React-Native 版本）
-博客地址：![https://www.pengzhenjin.top/archives/react-native%E7%89%88%E9%AB%98%E4%BB%BF%E6%B7%98%E5%AE%9D%E4%BA%AC%E4%B8%9C%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2](https://www.pengzhenjin.top/archives/react-native%E7%89%88%E9%AB%98%E4%BB%BF%E6%B7%98%E5%AE%9D%E4%BA%AC%E4%B8%9C%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)
 ### 仿淘宝、京东等商品分类页面
 - 商品一级分类
 - 商品二级分类
@@ -35,3 +34,5 @@ yarn install
 ```
 yarn android
 ```
+
+**博客地址**：![React-Native 版高仿淘宝、京东商品分类页面](https://www.pengzhenjin.top/archives/react-native%E7%89%88%E9%AB%98%E4%BB%BF%E6%B7%98%E5%AE%9D%E4%BA%AC%E4%B8%9C%E5%95%86%E5%93%81%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)
