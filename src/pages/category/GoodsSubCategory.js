@@ -8,7 +8,7 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import TopTabView from './Components/TopTabView';
+import TopTabView from './components/TopTabView';
 import GoodsSubCategoryTab from './tab/GoodsSubCategoryTab';
 
 const tabArray = [

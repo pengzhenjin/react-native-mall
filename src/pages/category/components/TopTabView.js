@@ -16,8 +16,8 @@ import PropTypes from 'prop-types'
 import TopDropdownMenu from './TopDropdownMenu'
 
 
-const iconArrowUp = require('../../../images/icon_arrow_up.png')
-const iconArrowDown = require('../../../images/icon_arrow_down.png')
+const iconArrowUp = require('../../../images/category/icon_arrow_up.png')
+const iconArrowDown = require('../../../images/category/icon_arrow_down.png')
 
 const itemHeight = 50 // item 的高度
 

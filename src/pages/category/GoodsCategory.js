@@ -193,7 +193,11 @@ export default class GoodsCategory extends Component {
     };
 
     renderSeparatorLine = () => {
-        return <View style={styles.separator_line} />;
+        return (
+            <View style={{backgroundColor: '#FFFFFF'}}>
+                <View style={styles.separator_line} />
+            </View>
+        );
     };
 
     render() {

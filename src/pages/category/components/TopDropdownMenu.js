@@ -17,7 +17,7 @@ import {
 import PropTypes from 'prop-types';
 
 const width = Dimensions.get('window').width;
-const iconItemSelected = require('../../../images/icon_check_mark.png');
+const iconItemSelected = require('../../../images/category/icon_check_mark.png');
 
 export default class TopDropdownMenu extends Component {
     static propTypes = {

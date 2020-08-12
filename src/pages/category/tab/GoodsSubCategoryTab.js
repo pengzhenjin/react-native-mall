@@ -3,7 +3,7 @@
  * @author: pengzhenjin
  * @date: 2020/7/22
  */
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
     StyleSheet,
     Image,
@@ -12,35 +12,35 @@ import {
     View,
     Dimensions,
     FlatList,
-} from 'react-native'
+} from 'react-native';
 
-const {width, height} = Dimensions.get('window')
+const {width, height} = Dimensions.get('window');
 
-const itemImageWidth = 165
-const itemImageHeight = 165
+const itemImageWidth = 165;
+const itemImageHeight = 165;
 
-const iconSolidArrowDown = require('../../../images/icon_solid_arrow_down.png')
-const iconSolidArrowUp = require('../../../images/icon_solid_arrow_up.png')
-const imageGoods = require('../../../images/goods.png')
+const iconSolidArrowDown = require('../../../images/category/icon_solid_arrow_down.png');
+const iconSolidArrowUp = require('../../../images/category/icon_solid_arrow_up.png');
+const imageGoods = require('../../../images/goods.png');
 
 export default class GoodsSubCategoryTab extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             goodsList: [],
 
             isOrderSynthesize: true, // 是否是综合排序
             isOrderPrice: false, // 是否是价格排序
-        }
+        };
     }
 
     componentDidMount() {
-        this.initData()
+        this.initData();
     }
 
     initData = () => {
-        const imgUrl1 = imageGoods
-        const imgUrl2 = imageGoods
+        const imgUrl1 = imageGoods;
+        const imgUrl2 = imageGoods;
 
         const dataList = [
             {
@@ -88,10 +88,10 @@ export default class GoodsSubCategoryTab extends Component {
                 name: '沙发1',
                 imgUrl: imgUrl1,
             },
-        ]
+        ];
 
-        this.setState({goodsList: dataList})
-    }
+        this.setState({goodsList: dataList});
+    };
 
     /**
      * 跳转到商品详情页面
@@ -99,7 +99,7 @@ export default class GoodsSubCategoryTab extends Component {
      */
     gotoGoodsDetailPage = (item) => {
         // this.props.navigation.navigate('GoodsDetail')
-    }
+    };
 
     /**
      * 综合排序
@@ -108,8 +108,8 @@ export default class GoodsSubCategoryTab extends Component {
         this.setState({
             isOrderSynthesize: true,
             isOrderPrice: false,
-        })
-    }
+        });
+    };
 
     /**
      * 价格排序
@@ -118,17 +118,17 @@ export default class GoodsSubCategoryTab extends Component {
         this.setState({
             isOrderSynthesize: false,
             isOrderPrice: true,
-        })
-    }
+        });
+    };
 
     /**
      * 渲染排序 tab
      * @returns {*}
      */
     renderSortTab() {
-        const isOrderSynthesize = this.state.isOrderSynthesize
-        const isOrderPrice = this.state.isOrderPrice
-        const textActivateStyle = styles.sort_tab_item_text_activate
+        const isOrderSynthesize = this.state.isOrderSynthesize;
+        const isOrderPrice = this.state.isOrderPrice;
+        const textActivateStyle = styles.sort_tab_item_text_activate;
         return (
             <View style={styles.sort_tab_container}>
                 <TouchableOpacity style={styles.sort_tab_item_container} onPress={this.orderSynthesizeFunc}>
@@ -143,19 +143,19 @@ export default class GoodsSubCategoryTab extends Component {
                     </View>
                 </TouchableOpacity>
             </View>
-        )
+        );
     }
 
     renderSeparator = () => {
-        return <View style={styles.list_item_separator} />
-    }
+        return <View style={styles.list_item_separator} />;
+    };
 
     renderItem = ({item, index}) => {
-        let marginStyle
+        let marginStyle;
         if (index % 2 === 0) {
-            marginStyle = {marginLeft: 10, marginRight: 5}
+            marginStyle = {marginLeft: 0, marginRight: 5};
         } else {
-            marginStyle = {marginLeft: 5, marginRight: 10}
+            marginStyle = {marginLeft: 5, marginRight: 0};
         }
         return (
             <View style={styles.list_item_container1}>
@@ -178,10 +178,17 @@ export default class GoodsSubCategoryTab extends Component {
                             <Text style={[styles.list_item_text2, {fontSize: 12}]}>.00</Text>
                         </Text>
                     </View>
+                    {
+                        index % 2 === 0 &&
+                        <View style={styles.list_item_container5}>
+                            <Text style={styles.list_item_tag1}>自营</Text>
+                            <Text style={styles.list_item_tag2}>爆款</Text>
+                        </View>
+                    }
                 </TouchableOpacity>
             </View>
-        )
-    }
+        );
+    };
 
     render() {
         return (
@@ -197,7 +204,7 @@ export default class GoodsSubCategoryTab extends Component {
                     numColumns={2}
                 />
             </View>
-        )
+        );
     }
 }
 
@@ -257,9 +264,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     list_item_container4: {
-        flexDirection: 'row',
         width: itemImageWidth,
+        flexDirection: 'row',
         marginTop: 12,
+    },
+    list_item_container5: {
+        width: itemImageWidth,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginTop: 10,
     },
     list_item_image: {
         width: itemImageWidth,
@@ -274,8 +287,31 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#FF0000',
     },
+    list_item_tag1: {
+        lineHeight: 16,
+        fontSize: 11,
+        color: '#FFFFFF',
+        backgroundColor: '#FA7B00',
+        overflow: 'hidden',
+        borderWidth: 1,
+        borderColor: '#FA7B00',
+        borderRadius: 2,
+        paddingHorizontal: 2,
+    },
+    list_item_tag2: {
+        lineHeight: 16,
+        fontSize: 11,
+        color: '#FA7B00',
+        backgroundColor: '#FFFFFF',
+        overflow: 'hidden',
+        borderWidth: 1,
+        borderColor: '#FA7B00',
+        borderRadius: 2,
+        paddingHorizontal: 2,
+        marginHorizontal: 8,
+    },
     list_item_separator: {
         height: 10,
         backgroundColor: 'transparent',
     },
-})
+});

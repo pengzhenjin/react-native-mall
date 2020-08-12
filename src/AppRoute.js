@@ -5,14 +5,20 @@
  */
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import GoodsCategory from './pages/Category/GoodsCategory';
-import GoodsSubCategory from './pages/Category/GoodsSubCategory';
+import MallHome from './pages/home/MallHome';
+import GoodsCategory from './pages/category/GoodsCategory';
+import GoodsSubCategory from './pages/category/GoodsSubCategory';
 
 // App路由
 const AppRoute = () => {
     const Stack = createStackNavigator();
     return (
-        <Stack.Navigator initialRouteName="GoodsCategory">
+        <Stack.Navigator initialRouteName="MallHome">
+            <Stack.Screen
+                name="MallHome"
+                component={MallHome}
+                options={{headerShown: false}}
+            />
             <Stack.Screen
                 name="GoodsCategory"
                 component={GoodsCategory}
