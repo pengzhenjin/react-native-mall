@@ -14,7 +14,7 @@ import {
 import PropTypes from 'prop-types';
 import GoodsCategory from '../../category/GoodsCategory';
 
-const itemHeight = 40; // item 的高度
+const itemHeight = 32; // item 的高度
 
 export default class TopTabView extends Component {
     static propTypes = {
@@ -79,8 +79,8 @@ export default class TopTabView extends Component {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        marginTop: 5,
-        marginBottom: 10,
+        backgroundColor: '#FA7B00',
+        paddingHorizontal: 14,
     },
     list_container: {
         flex: 1,

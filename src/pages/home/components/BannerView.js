@@ -95,11 +95,12 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
         paddingHorizontal: 14,
+        paddingTop: 10,
         height: bannerHeight - bannerOffset,
     },
     banner_swiper: {
         position: 'absolute',
-        top: 0,
+        top: 10,
         paddingHorizontal: 14,
     },
     banner_dot: {
@@ -122,5 +123,6 @@ const styles = StyleSheet.create({
     banner_img: {
         width: width - 28,
         height: bannerHeight,
+        borderRadius: 5,
     },
 });

@@ -12,6 +12,7 @@ import {
     Text,
     TouchableOpacity,
     FlatList,
+    Animated,
 } from 'react-native';
 import Badge from '../../components/Badge';
 import BannerView from './components/BannerView';
@@ -81,6 +82,9 @@ export default class MallHome extends Component {
                 },
             ],
             guessLikeData: [],    // 猜你喜欢 数据
+
+            logoOpacity: new Animated.Value(1), // logo渐变动画值，默认值：1，表示不透明
+            searchViewMargin: new Animated.Value(0), // 搜索框边距动画值，默认值：0
         };
     }
 
@@ -130,6 +134,18 @@ export default class MallHome extends Component {
     };
 
     /**
+     * 滚动条监听事件
+     * @param event
+     */
+    onScrollFunc = (event) => {
+        // 将滚动的值绑定到渐变动画
+        Animated.event([{nativeEvent: {contentOffset: {y: this.state.logoOpacity}}}])(event);
+
+        // 将滚动的值绑定到边距动画
+        Animated.event([{nativeEvent: {contentOffset: {y: this.state.searchViewMargin}}}])(event);
+    };
+
+    /**
      * 渲染状态栏
      * @returns {*}
      */
@@ -143,11 +159,42 @@ export default class MallHome extends Component {
         }
     };
 
+    renderSearchView = () => {
+        const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
+
+        const marginRight = this.state.searchViewMargin.interpolate({
+            inputRange: [0, 80], // 当滚动条滚动到0～80的位置时
+            outputRange: [0, 80], // 将右边距改为从0～80
+            extrapolate: 'clamp', // 滚动超出0～80的范围，不在更改边距
+        });
+        const marginTop = this.state.searchViewMargin.interpolate({
+            inputRange: [0, 160], // 当滚动条滚动到0～160的位置时
+            outputRange: [0, -36], // 将上边距改为从0～-36
+            extrapolate: 'clamp', // 滚动超出0～160的范围，不在更改边距
+        });
+
+        return (
+            <AnimatedTouchableOpacity
+                style={styles.top_search_container(marginRight, marginTop)}
+                activeOpacity={0.8}
+                onPress={this.gotoSearch}
+            >
+                <Image style={styles.top_search_icon} source={iconSearch} />
+                <Text style={styles.top_search_text}>{'新品'}</Text>
+            </AnimatedTouchableOpacity>
+        );
+    };
+
     /**
      * 渲染顶部相关组件
      * @returns {*}
      */
     renderTopView = () => {
+        const logoOpacity = this.state.logoOpacity.interpolate({
+            inputRange: [0, 160], // 当滚动条滚动到0～160的位置时
+            outputRange: [1, 0], // 将透明度改为从1～0
+            extrapolate: 'clamp', // 滚动超出0～160的范围，不在更改透明值
+        });
         return (
             <View style={styles.top_container}>
                 {/*状态栏*/}
@@ -155,7 +202,7 @@ export default class MallHome extends Component {
 
                 {/*logo栏*/}
                 <View style={styles.top_logo_container}>
-                    <Image source={logoHome} />
+                    <Animated.Image source={logoHome} style={{opacity: logoOpacity}} />
                     <View style={styles.top_logo_right_container}>
                         <TouchableOpacity
                             activeOpacity={0.8}
@@ -189,13 +236,7 @@ export default class MallHome extends Component {
                 </View>
 
                 {/*搜索栏*/}
-                <TouchableOpacity style={styles.top_search_container} activeOpacity={0.8} onPress={this.gotoSearch}>
-                    <Image style={styles.top_search_icon} source={iconSearch} />
-                    <Text style={styles.top_search_text}>{'新品'}</Text>
-                </TouchableOpacity>
-
-                {/*顶部tab栏*/}
-                <TopTabView data={tabData} {...this.props} />
+                {this.renderSearchView()}
             </View>
         );
     };
@@ -207,6 +248,9 @@ export default class MallHome extends Component {
     renderListHeader = () => {
         return (
             <View>
+                {/*顶部tab栏*/}
+                <TopTabView data={tabData} {...this.props} />
+
                 {/*banner板块*/}
                 <BannerView bannerData={this.state.bannerList} {...this.props} />
 
@@ -259,6 +303,8 @@ export default class MallHome extends Component {
                     renderItem={this.renderListItem}
                     ListHeaderComponent={this.renderListHeader}
                     ItemSeparatorComponent={this.renderListItemSeparator}
+                    onScroll={this.onScrollFunc}
+                    scrollEventThrottle={160}
                 />
             </View>
         );
@@ -297,13 +343,16 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: '#FA7B00',
     },
-    top_search_container: {
+    top_search_container: (marginRight, marginTop) => ({
         height: 30,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
         borderRadius: 15,
-    },
+        marginBottom: 10,
+        marginRight: marginRight,
+        marginTop: marginTop,
+    }),
     top_search_icon: {
         marginLeft: 12,
         marginRight: 6,
