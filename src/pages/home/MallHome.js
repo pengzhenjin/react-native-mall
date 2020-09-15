@@ -8,6 +8,7 @@ import {
     StyleSheet,
     StatusBar,
     View,
+    SafeAreaView,
     Image,
     Text,
     TouchableOpacity,
@@ -139,10 +140,16 @@ export default class MallHome extends Component {
      */
     onScrollFunc = (event) => {
         // 将滚动的值绑定到渐变动画
-        Animated.event([{nativeEvent: {contentOffset: {y: this.state.logoOpacity}}}])(event);
+        Animated.event(
+            [{nativeEvent: {contentOffset: {y: this.state.logoOpacity}}}],
+            {useNativeDriver: false},
+        )(event);
 
         // 将滚动的值绑定到边距动画
-        Animated.event([{nativeEvent: {contentOffset: {y: this.state.searchViewMargin}}}])(event);
+        Animated.event(
+            [{nativeEvent: {contentOffset: {y: this.state.searchViewMargin}}}],
+            {useNativeDriver: false},
+        )(event);
     };
 
     /**
@@ -154,7 +161,9 @@ export default class MallHome extends Component {
             return <StatusBar barStyle='light-content' translucent={false} backgroundColor={'#FA7B00'} />;
         } else { // iOS 设备
             return (
-                <StatusBar barStyle='light-content' />
+                <SafeAreaView>
+                    <StatusBar barStyle='light-content' />
+                </SafeAreaView>
             );
         }
     };
