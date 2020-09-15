@@ -449,9 +449,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         color: '#333333',
-        marginHorizontal: 14,
-        marginBottom: 12,
-        marginTop: 20,
+        backgroundColor: '#FFFFFF',
+        paddingHorizontal: 14,
+        paddingBottom: 12,
+        paddingTop: 20,
     },
 });
 

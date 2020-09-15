@@ -15,7 +15,7 @@ import Swiper from 'react-native-swiper';
 import PropTypes from 'prop-types';
 
 const width = Dimensions.get('window').width;
-const bannerHeight = 140;
+const bannerHeight = 150;
 
 export default class BannerView extends Component {
     static propTypes = {
@@ -86,7 +86,7 @@ export default class BannerView extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
         paddingHorizontal: 14,
     },
     banner_swiper: {
