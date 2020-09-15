@@ -8,6 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MallHome from './pages/home/MallHome';
 import GoodsCategory from './pages/category/GoodsCategory';
 import GoodsSubCategory from './pages/category/GoodsSubCategory';
+import ShopStore from './pages/shopStore/ShopStore';
 
 // App路由
 const AppRoute = () => {
@@ -28,6 +29,11 @@ const AppRoute = () => {
                 name="GoodsSubCategory"
                 component={GoodsSubCategory}
                 options={{headerShown: true}}
+            />
+            <Stack.Screen
+                name="ShopStore"
+                component={ShopStore}
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     );

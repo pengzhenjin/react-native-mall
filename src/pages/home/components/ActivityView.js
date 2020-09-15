@@ -35,22 +35,34 @@ export default class ActivityView extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.row_container}>
-                    <TouchableOpacity style={styles.item_container} onPress={null}>
+                    <TouchableOpacity
+                        style={styles.item_container}
+                        onPress={() => this.props.navigation.navigate('ShopStore')}
+                    >
                         <Text style={styles.item_text}>{'新人专享'}</Text>
                         <Image style={styles.item_image} source={imageUrl} />
                     </TouchableOpacity>
                     <View style={{width: 10}} />
-                    <TouchableOpacity style={styles.item_container} onPress={null}>
+                    <TouchableOpacity
+                        style={styles.item_container}
+                        onPress={() => this.props.navigation.navigate('ShopStore')}
+                    >
                         <Text style={styles.item_text}>{''}</Text>
                         <Image style={styles.item_image} source={imageUrl} />
                     </TouchableOpacity>
                     <View style={{width: 15}} />
-                    <TouchableOpacity style={styles.item_container} onPress={null}>
+                    <TouchableOpacity
+                        style={styles.item_container}
+                        onPress={() => this.props.navigation.navigate('ShopStore')}
+                    >
                         <Text style={styles.item_text}>{'每日上新'}</Text>
                         <Image style={styles.item_image} source={imageUrl} />
                     </TouchableOpacity>
                     <View style={{width: 10}} />
-                    <TouchableOpacity style={styles.item_container} onPress={null}>
+                    <TouchableOpacity
+                        style={styles.item_container}
+                        onPress={() => this.props.navigation.navigate('ShopStore')}
+                    >
                         <Text style={styles.item_text}>{''}</Text>
                         <Image style={styles.item_image} source={imageUrl} />
                     </TouchableOpacity>
