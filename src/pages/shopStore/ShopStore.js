@@ -137,6 +137,13 @@ export default class ShopStore extends Component {
     };
 
     /**
+     * 返回按钮
+     */
+    onBackFunc = () => {
+        this.props.navigation.goBack();
+    };
+
+    /**
      * 渲染状态栏
      * @returns {*}
      */
@@ -154,7 +161,7 @@ export default class ShopStore extends Component {
 
     renderLeftBackBtn = () => {
         return (
-            <TouchableOpacity style={styles.top_nav_back_btn_container}>
+            <TouchableOpacity style={styles.top_nav_back_btn_container} onPress={this.onBackFunc}>
                 <Image style={styles.top_nav_back_btn} source={iconBack} />
             </TouchableOpacity>
         );
